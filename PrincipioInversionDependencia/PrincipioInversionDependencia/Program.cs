@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BLL;
 
 namespace PrincipioInversionDependencia
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("voy a empezar por favor profe ir a rama para ver codigo completo");
+            IFormato formato = new FormatoPDFService();
+            IFormato formato2 = new FormatoExcelService();
+            ImpresionService impresion = new ImpresionService(formato2);
+            Console.WriteLine(impresion.Imprimir());
+            Console.ReadKey();
+
         }
     }
 }
